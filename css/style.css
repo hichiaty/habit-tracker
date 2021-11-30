@@ -1,0 +1,29 @@
+.middle-indicator{
+     position:absolute;
+     top: 15%;
+     }
+    .middle-indicator-text{
+     font-size: 4.2rem;
+    }
+    a.middle-indicator-text{
+      color:gray !important;
+    }
+.content-indicator{
+      width: 64px;
+      height: 64px;
+      background: none;
+      -moz-border-radius: 50px;
+      -webkit-border-radius: 50px;
+      border-radius: 50px; 
+    }
+.indicators{
+        visibility: hidden;
+    }
+.carousel{
+  height: 160px !important;
+}
+
+.verticalLine {
+  border-left: thick solid #ff0000;
+}
+  

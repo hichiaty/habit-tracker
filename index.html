@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <!-- load local css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+      <!-- Modal Trigger -->
+  <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>No Habits Found!</h4>
+      <p>Hey there, seems like you're new here. Let's get you going - enter 5 habits you'd like to track below.</p>
+    
+      <form action="#">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="habit1" type="text" >
+            <label for="habit1">Habit 1</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="habit2" type="text" >
+            <label for="habit2">Habit 2</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="habit3" type="text" >
+            <label for="habit3">Habit 3</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="habit4" type="text" >
+            <label for="habit4">Habit 4</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="habit5" type="text">
+            <label for="habit5">Habit 5</label>
+          </div>
+        </div>
+        </form>
+
+    
+    
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Add</a>
+    </div>
+  </div>
+
+
+        <div class="container">
+          <!-- carousel -->
+            <div class="carousel carousel-slider center " data-indicators="true">
+              <div class="carousel-fixed-item center middle-indicator">
+               <div class="left">
+                <a href="#" class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-icons left  middle-indicator-text">navigate_before</i></a>
+               </div>
+               <div class="right">
+               <a href="#" class="moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i class="material-icons right middle-indicator-text">navigate_next</i></a>
+               </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- habits header -->
+        <div class="container">
+          <div class="col s12 m7">
+            <div class="card horizontal">
+              <div class="card-stacked">
+                <div class="card-content">
+                  <h4 class="center">Habits</h4>
+                  <div class="container center habits-header">
+                  <!-- button habit 1 -->
+                  <!-- <a class="waves-effect waves-teal btn-flat">Meditate</a> -->
+                  <!-- button habit 2 -->
+                  <!-- <a class="waves-effect waves-teal btn-flat">Gratitude</a> -->
+                  <!-- button habit 3 -->
+                  <!-- <a class="waves-effect waves-teal btn-flat">Sleep Routine</a> -->
+                  <!-- button habit 4 -->
+                  <!-- <a class="waves-effect waves-teal btn-flat">Toilet</a> -->
+                  <!-- button habit 5 -->
+                  <!-- <a class="waves-effect waves-teal btn-flat">Brush teeth</a> -->
+                  <!-- button habit 6 -->
+                  
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="days-cards"></div>
+      <!-- habits content -->
+            <!-- <div class="container">
+              <div class="col s12 m7">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <h4 class="center">1</h4>
+                      <div class="container center">
+                        <form action="#" >
+                          <div class="row">
+                          <p>
+                            <label style="padding: 1.5%;">
+                              <input name="group1" type="checkbox"  />
+                              <span>MEDITATE</span>
+                            </label>
+                 
+                            <label style="padding: 1.5%;">
+                              <input name="group1" type="checkbox"  />
+                              <span>GRATITUDE</span>
+                            </label>
+                          
+                            <label style="padding: 1.5%;">
+                              <input name="group1" type="checkbox"  />
+                              <span>SLEEP</span>
+                            </label>
+                          
+                            <label style="padding: 1.5%;">
+                              <input name="group1" type="checkbox"  />
+                              <span>TOILET</span>
+                            </label>
+                            <label style="padding: 1.5%;">
+                              <input name="group1" type="checkbox"  />
+                              <span>BRUSH TEETH</span>
+                            </label>
+                          </p>
+                        </div>
+                          </form>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div> -->
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+
+
+   // on document ready, call get date info
+   $(document).ready(function(){
+      $('.modal').modal();
+
+      // check local storage for habits data
+      if (localStorage.getItem('habits') === null) {
+        // if no data, ask for habits and generate new habits object
+        // get habits from user
+        $('.modal').modal('open');
+        get_habits();
+
+      } else {
+        // if data, get from local storage
+        habits = JSON.parse(localStorage.getItem('habits'));
+        setup();
+
+      }
+
+    });
+
+
+
+function update_cards(active_month, active_year) {
+
+      // check they're not null
+      if (active_month === null || active_year === null) {
+        return null;
+      }
+      // clear current cards
+      $('.days-cards').empty();
+      $('.habits-header').empty();
+      console.log(active_month);
+      console.log(active_year);
+
+
+      create_days_cards(active_year, active_month);
+
+    };
+
+    function setup(){
+
+    mmyyyy = set_dates_caro();
+
+    mm = mmyyyy[0];
+    yyyy = mmyyyy[1];
+
+    create_days_cards(yyyy, monthNames[mm]);
+
+    $('.carousel.carousel-slider').carousel({
+    indicators: false,
+    fullWidth: true,
+    dist: 0,
+    padding: 0,
+    noWrap: true,
+    onCycleTo: function(e) {
+      month = e.getAttribute('class').split(' ')[1];
+      year = e.getAttribute('class').split(' ')[2];
+      update_cards(month, year);
+    }
+  });
+
+  // go to  current month
+  $('.carousel.carousel-slider').carousel('set', mm);
+
+   // move next carousel
+   $('.moveNextCarousel').click(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $('.carousel').carousel('next');
+   });
+
+   // move prev carousel
+   $('.movePrevCarousel').click(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $('.carousel').carousel('prev');
+   });}
+
+
+    function get_habits(){
+      today = new Date();
+      // listen to modal button click
+      $('.modal-close').click(function(){
+
+        // get habits from modal
+        habit1 = $('#habit1').val();
+        habit2 = $('#habit2').val();
+        habit3 = $('#habit3').val();
+        habit4 = $('#habit4').val();
+        habit5 = $('#habit5').val();
+
+        // create habits object
+        pre_habits = [habit1, habit2, habit3, habit4, habit5];
+        // iterate through habits and create new habits object if not empty
+        habits_clean = [];
+        for (var i = 0; i < pre_habits.length; i++) {
+          if (pre_habits[i] != "") {
+            habits_clean.push(pre_habits[i]);
+          }
+        }
+
+        habits = generate_habits_object(today.getFullYear(), habits_clean);
+        // save to local storage
+        localStorage.setItem('habits', JSON.stringify(habits));
+        setup();
+      });
+    };
+
+
+    function create_days_cards(year, month){
+      // get habits object from local storage
+      habits = JSON.parse(localStorage.getItem('habits'));
+      // get habits array from object
+      habits_array = habits['data'][year][month]['habits'];
+      // add habits to habit header
+      for (var i = 0; i < habits_array.length; i++) {
+        $('.habits-header').append('<a class="waves-effect waves-teal btn-flat">'+habits_array[i]+'</a>');
+      }
+      $('.habits-header').append('<a id="add_new_habbit" class="waves-effect waves-teal btn-flat"><i class="material-icons">add</i></a>');
+      // get habits per day for month
+      // get length of month from habits object
+      days_in_month = Object.keys(habits['data'][year][month]).length -1; // -1 to remove 'habits' key
+      // iterate through days in month
+      for (var i = 1; i <= days_in_month; i++) {
+        // get habits for day
+        habits_for_day = habits['data'][year][month][i];
+        // create habit card
+        create_habit_card(habits_array, habits_for_day, i, month, year);
+      }
+      $('input[name=group1]').change(function(){
+        // get id of checkbox
+        var id = $(this).attr('id').split('-');
+        console.log(id);
+        habits = JSON.parse(localStorage.getItem('habits'));
+        day = id[0];
+        which_habit = id[1];
+        month = id[2];
+        year = id[3];
+        habits['data'][year][month][day][which_habit] = $(this).is(':checked');
+        localStorage.setItem('habits', JSON.stringify(habits));
+});
+
+    };
+
+
+    function create_habit_card(habits_array, habits_for_day, day, month, year){
+      // create habit card content
+      habit_card_content = '<div class="container">    <div class="col s12 m7">      <div class="card horizontal">        <div class="card-stacked">          <div class="card-content">            <h4 class="center">'+day+'</h4><div class="container center">  <form action="#" >    <div class="row">    <p>';
+      // iterate through habits array
+      for (var i = 0; i < habits_array.length; i++) {
+        // if habit is in habits for day, add checkbox
+        if (habits_for_day[i] == true) {
+          habit_card_content += '<label style="margin: 4%;"><input name="group1" id="'+day+'-'+i+'-'+month+'-'+year+'" type="checkbox" checked /> <span>'+habits_array[i]+'</span></label>';
+        } else {
+          habit_card_content += '<label style="margin: 4%;"><input name="group1" id="'+day+'-'+i+'-'+month+'-'+year+'" type="checkbox" /><span>'+habits_array[i]+'</span></label>';
+        }
+      }
+      habit_card_content += '</p></div></form></div></div></div></div></div></div>';
+      // append habit card to days cards
+      $('.days-cards').append(habit_card_content);
+    };
+
+   function set_dates_caro(){
+     // get current date
+     var today = new Date();
+     var dd = today.getDate();
+     var mm = monthNames[today.getMonth()]; 
+     var yyyy = today.getFullYear();
+
+     // create new div for every month
+     for (var i = 0; i < 12; i++) {
+        var new_div = '<div class="carousel-item '+monthNames[i]+' ' + yyyy + '" href="#"><h2>' + monthNames[i] + ' ' + yyyy + '</h2></div>';
+        $('.carousel-slider').append(new_div);
+     };
+     return [today.getMonth() , yyyy];
+    }
+
+
+    function get_days_in_month(month, year) {
+      return 32 - new Date(year, month, 32).getDate();
+    }
+
+    function generate_habits_object(year, habits){
+      var habits_object = {};
+      var monthobj = {};
+      var yearobj = {};
+
+      for (var i = 0; i < 12; i++) {
+        var month = monthNames[i];
+        var dayobj = {};
+        for (var j = 1; j < get_days_in_month(i, year)+1; j++) {
+
+          habits_checked = [];
+
+          //  true for len habits
+          for (var k = 0; k < habits.length; k++) {
+            habits_checked.push(false);
+          }
+
+          dayobj[j] = habits_checked;
+
+        }
+        monthobj[month] = dayobj;
+        monthobj[month]["habits"] = habits;
+      }
+      yearobj[year] = monthobj;
+      habits_object["data"] = yearobj;
+      return habits_object;
+    }
+    </script>
+    </body>
+  </html>
+        
